@@ -8,19 +8,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Poppins', sans-serif; background-color: #f4f7f6; color: #333; }
-        .hero { background: linear-gradient(135deg, #1e5128, #4e944f); color: white; padding: 50px 20px; text-align: center; border-radius: 0 0 40px 40px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        .hero { background: linear-gradient(135deg, #1e5128, #4e944f); color: white; padding: 40px 20px; text-align: center; border-radius: 0 0 40px 40px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        .logo-container { background: white; width: 100px; height: 100px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px auto; box-shadow: 0 4px 10px rgba(0,0,0,0.1); overflow: hidden; }
+        .logo-container img { width: 80%; height: auto; }
         .card-custom { border: none; border-radius: 20px; box-shadow: 0 6px 20px rgba(0,0,0,0.08); margin-bottom: 25px; background: white; }
         .progress { height: 28px; border-radius: 20px; background-color: #e9ecef; }
         .progress-bar { font-weight: 600; font-size: 0.9rem; transition: width 1s ease-in-out; }
         .btn-success { background-color: #4e944f; border: none; border-radius: 12px; padding: 12px; }
         .btn-success:hover { background-color: #1e5128; }
         .form-select, .form-control { border-radius: 12px; padding: 12px; border: 1px solid #ddd; }
-        .tahap-badge { font-size: 0.75rem; vertical-align: middle; }
+        .status-badge { font-size: 0.75rem; padding: 5px 12px; border-radius: 20px; }
     </style>
 </head>
 <body>
 
     <div class="hero">
+        <div class="logo-container">
+            <img src="logo.png" alt="Logo MKSLB" onerror="this.src='https://via.placeholder.com/80?text=MKSLB'">
+        </div>
         <h1 class="fw-bold">🌙 Daurah Remaja Quranic</h1>
         <p class="lead">Masjid Kampung Sungai Lang Baru (MKSLB)</p>
         <div class="badge bg-warning text-dark px-3 py-2">MODUL IHYA RAMADHAN 1447H / 2026M</div>
@@ -31,19 +36,19 @@
         <div class="row text-center mb-4">
             <div class="col-md-4 mb-3">
                 <div class="card card-custom p-3">
-                    <h6 class="text-muted small uppercase">Peserta Berdaftar</h6>
-                    <h3 class="fw-bold text-success" id="totalPeserta">45</h3>
+                    <h6 class="text-muted small text-uppercase">Peserta Berdaftar</h6>
+                    <h3 class="fw-bold text-success">45</h3>
                 </div>
             </div>
             <div class="col-md-4 mb-3">
                 <div class="card card-custom p-3">
-                    <h6 class="text-muted small uppercase">Purata Hafazan</h6>
+                    <h6 class="text-muted small text-uppercase">Purata Hafazan</h6>
                     <h3 class="fw-bold text-primary">65%</h3>
                 </div>
             </div>
             <div class="col-md-4 mb-3">
                 <div class="card card-custom p-3">
-                    <h6 class="text-muted small uppercase">Sesi Kehadiran</h6>
+                    <h6 class="text-muted small text-uppercase">Hujung Minggu Ke-</h6>
                     <h3 class="fw-bold text-danger">#1 / 4</h3>
                 </div>
             </div>
@@ -62,58 +67,64 @@
                             <option>MUHAMMAD AZIQ DANIEL BIN MOHD KHAIRIL</option>
                             <option>MUHAMMAD AMIR RASYIDI BIN SHAMSUDDIN</option>
                             <option>MUHAMMAD DANEAL HAFIZ BIN MOHD HAFIZUDIN</option>
+                            <option>MUHAMMAD AQIL RAYYAN BIN MOHD SYUKRI</option>
+                            <option>MUHAMMAD HARITH IRFAN BIN AZLAN</option>
                         </select>
                     </div>
                     <div class="col-md-3 mb-3">
                         <label class="form-label small fw-bold">Tahap Silibus</label>
                         <select class="form-select" id="tahap">
-                            <option>Tahap 1 (Juz Amma Pendek)</option>
-                            <option>Tahap 2 (Ad-Dhuha - Al-Bayyinah)</option>
-                            <option>Tahap 3 (Al-Ghaasyiah - At-Tariq)</option>
-                            <option>Tahap 4 (Abasa - Al-Buruj)</option>
-                            <option>Tahap 5 (Al-Fajr - An-Naba')</option>
+                            <option>Tahap 1 (12 Surah Lazim)</option>
+                            <option>Tahap 2 (10 Surah: Ad-Dhuha - Al-Bayyinah)</option>
+                            <option>Tahap 3 (7 Surah: Al-Ghaasyiah - At-Tariq)</option>
+                            <option>Tahap 4 (4 Surah: Abasa - Al-Buruj)</option>
+                            <option>Tahap 5 (4 Surah: Al-Fajr - An-Naba')</option>
                         </select>
                     </div>
                     <div class="col-md-3 mb-3">
                         <label class="form-label small fw-bold">% Kemajuan</label>
-                        <input type="number" id="progressInput" class="form-control" placeholder="Contoh: 80" min="0" max="100">
+                        <input type="number" id="progressInput" class="form-control" placeholder="0-100" min="0" max="100">
                     </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label small fw-bold">Surah Terakhir Dicapai</label>
+                    <input type="text" id="surahTerakhir" class="form-control" placeholder="Contoh: Al-A'laa ayat 1-10">
                 </div>
                 <button type="button" class="btn btn-success w-100 fw-bold shadow-sm" onclick="submitData()">Simpan Rekod & Update Dashboard</button>
             </form>
         </div>
 
-        <div class="d-flex justify-content-between align-items-center mb-3 mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-3 mt-5">
             <h5 class="fw-bold m-0">Live Progress Dashboard</h5>
-            <span class="badge bg-dark">Real-Time Update</span>
+            <span class="badge bg-dark px-3 py-2">Hafazan Terkini</span>
         </div>
 
         <div id="dashboardList">
             <div class="card card-custom p-3">
                 <div class="d-flex justify-content-between align-items-center mb-2">
                     <span class="fw-bold text-uppercase">Ahmad Nazhan Bin Azmi</span>
-                    <span class="badge bg-success">Tahap 3 Selesai</span>
+                    <span class="badge bg-success status-badge">Tahap 3: 100%</span>
                 </div>
                 <div class="progress mb-2">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width: 100%">100%</div>
+                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width: 100%">LULUS TAHAP 3</div>
                 </div>
                 <div class="d-flex justify-content-between small text-muted">
-                    <span>Surah Terakhir: At-Tariq</span>
-                    <span>Status: Cemerlang</span>
+                    <span>Surah: At-Tariq Selesai</span>
+                    <span>Mentor: Ustaz Hafiz</span>
                 </div>
             </div>
 
             <div class="card card-custom p-3">
                 <div class="d-flex justify-content-between align-items-center mb-2">
                     <span class="fw-bold text-uppercase">Muhammad Naufal Haziq</span>
-                    <span class="badge bg-primary">Tahap 2</span>
+                    <span class="badge bg-primary status-badge">Tahap 2: 45%</span>
                 </div>
                 <div class="progress mb-2">
-                    <div class="progress-bar progress-bar-striped bg-warning text-dark" role="progressbar" style="width: 45%">45%</div>
+                    <div class="progress-bar progress-bar-striped bg-warning text-dark" role="progressbar" style="width: 45%">45% SEDANG BERUSAHA</div>
                 </div>
                 <div class="d-flex justify-content-between small text-muted">
-                    <span>Surah Terakhir: Al-Bayyinah</span>
-                    <span>Status: Dalam Semakan Mentor</span>
+                    <span>Surah: Al-Bayyinah (Ayat 1-4)</span>
+                    <span>Mentor: Ustaz Zaid</span>
                 </div>
             </div>
         </div>
@@ -122,22 +133,23 @@
 
     <footer class="text-center my-5 text-muted pb-4">
         <hr class="container">
-        <p class="mb-1">© 2026 Urus Setia Ihya Ramadhan MKSLB</p>
-        <small>Digital Management System by GitHub Pages & Google Sheets</small>
+        <p class="mb-1">© 2026 Jawatankuasa Daurah Remaja MKSLB</p>
+        <small>Sistem Pengurusan Ihya Ramadhan Digital</small>
     </footer>
 
     <script>
         function submitData() {
             const nama = document.getElementById('namaPeserta').value;
             const progress = document.getElementById('progressInput').value;
+            const surah = document.getElementById('surahTerakhir').value;
             
-            if(!nama || !progress) {
-                alert("Sila pilih nama dan masukkan % kemajuan.");
+            if(!nama || !progress || !surah) {
+                alert("Sila lengkapkan semua maklumat (Nama, Kemajuan, dan Surah).");
                 return;
             }
 
-            // Simulasi Update (Akan datang: Hubungkan ke Google Apps Script)
-            alert("Rekod " + nama + " sebanyak " + progress + "% telah dihantar ke pengkalan data MKSLB.");
+            // Simulasi penghantaran data
+            alert("Berjaya! Rekod " + nama + " telah dikemaskini ke 1447H Database.");
             document.getElementById('updateForm').reset();
         }
     </script>
