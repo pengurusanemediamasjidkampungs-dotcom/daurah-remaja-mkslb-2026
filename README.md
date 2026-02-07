@@ -14,7 +14,8 @@ Sistem pengurusan digital bersepadu untuk memantau kemajuan hafazan remaja sepan
 
 ### 2. Pelaksanaan Program
 - **Hari:** Setiap Sabtu & Ahad (Sepanjang Ramadhan).
-- **Masa:** 8:30 Pagi - 1:30 Tengahari.
+- **Masa:** 8:00 Pagi - 11:00 Pagi
+.
 - **Sasaran:** Remaja Kariah MKSLB.
 - **Kit Peserta:** Kad Lanyard (QR Code) & Buku Rekod Fizikal (Checklist Tahap 1-5).
 
