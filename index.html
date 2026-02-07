@@ -32,7 +32,6 @@
     </div>
 
     <div class="container mt-5">
-        
         <div class="row text-center mb-4">
             <div class="col-md-4 mb-3">
                 <div class="card card-custom p-3">
@@ -42,8 +41,8 @@
             </div>
             <div class="col-md-4 mb-3">
                 <div class="card card-custom p-3">
-                    <h6 class="text-muted small text-uppercase">Purata Hafazan</h6>
-                    <h3 class="fw-bold text-primary">65%</h3>
+                    <h6 class="text-muted small text-uppercase">Status Sistem</h6>
+                    <h3 class="fw-bold text-primary">ONLINE</h3>
                 </div>
             </div>
             <div class="col-md-4 mb-3">
@@ -69,88 +68,100 @@
                             <option>MUHAMMAD DANEAL HAFIZ BIN MOHD HAFIZUDIN</option>
                             <option>MUHAMMAD AQIL RAYYAN BIN MOHD SYUKRI</option>
                             <option>MUHAMMAD HARITH IRFAN BIN AZLAN</option>
+                            <option>MUHAMMAD DANISH ISKANDAR BIN MOHD ADLI</option>
+                            <option>MUHAMMAD SYAHMI BIN MOHD SHUKRI</option>
+                            <option>MUHAMMAD AIMAN HAKIM BIN ABDULLAH</option>
+                            <option>MUHAMMAD IRFAN BIN MOHD ZAIREE</option>
+                            <option>NUR IMANINA BINTI MOHD FAUZI</option>
+                            <option>NURUL IZZAH BINTI KHAIRUL ANUAR</option>
                         </select>
                     </div>
-                    <div class="col-md-3 mb-3">
+                    <div class="col-md-6 mb-3">
                         <label class="form-label small fw-bold">Tahap Silibus</label>
                         <select class="form-select" id="tahap">
-                            <option>Tahap 1 (12 Surah Lazim)</option>
-                            <option>Tahap 2 (10 Surah: Ad-Dhuha - Al-Bayyinah)</option>
-                            <option>Tahap 3 (7 Surah: Al-Ghaasyiah - At-Tariq)</option>
-                            <option>Tahap 4 (4 Surah: Abasa - Al-Buruj)</option>
-                            <option>Tahap 5 (4 Surah: Al-Fajr - An-Naba')</option>
+                            <option>Tahap 1 (Surah Lazim: al-Fil - an-Naas)</option>
+                            <option>Tahap 2 (adh-Dhuha - al-Bayyinah)</option>
+                            <option>Tahap 3 (al-Ghaasyiah - at-Tariq)</option>
+                            <option>Tahap 4 (Abasa - al-Buruj)</option>
+                            <option>Tahap 5 (al-Fajr - an-Naba')</option>
                         </select>
                     </div>
-                    <div class="col-md-3 mb-3">
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label small fw-bold">Surah Terakhir Dicapai</label>
+                        <input type="text" id="surahTerakhir" class="form-control" placeholder="Contoh: Al-A'laa ayat 1-10">
+                    </div>
+                    <div class="col-md-6 mb-3">
                         <label class="form-label small fw-bold">% Kemajuan</label>
                         <input type="number" id="progressInput" class="form-control" placeholder="0-100" min="0" max="100">
                     </div>
                 </div>
-                <div class="mb-3">
-                    <label class="form-label small fw-bold">Surah Terakhir Dicapai</label>
-                    <input type="text" id="surahTerakhir" class="form-control" placeholder="Contoh: Al-A'laa ayat 1-10">
-                </div>
-                <button type="button" class="btn btn-success w-100 fw-bold shadow-sm" onclick="submitData()">Simpan Rekod & Update Dashboard</button>
+                <button type="button" id="submitBtn" class="btn btn-success w-100 fw-bold shadow-sm" onclick="submitData()">Simpan Rekod & Update Database</button>
             </form>
         </div>
 
         <div class="d-flex justify-content-between align-items-center mb-3 mt-5">
-            <h5 class="fw-bold m-0">Live Progress Dashboard</h5>
-            <span class="badge bg-dark px-3 py-2">Hafazan Terkini</span>
+            <h5 class="fw-bold m-0">Live Progress Dashboard (Preview)</h5>
+            <span class="badge bg-dark px-3 py-2">Real-Time Data</span>
         </div>
 
         <div id="dashboardList">
-            <div class="card card-custom p-3">
-                <div class="d-flex justify-content-between align-items-center mb-2">
-                    <span class="fw-bold text-uppercase">Ahmad Nazhan Bin Azmi</span>
-                    <span class="badge bg-success status-badge">Tahap 3: 100%</span>
-                </div>
-                <div class="progress mb-2">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width: 100%">LULUS TAHAP 3</div>
-                </div>
-                <div class="d-flex justify-content-between small text-muted">
-                    <span>Surah: At-Tariq Selesai</span>
-                    <span>Mentor: Ustaz Hafiz</span>
-                </div>
-            </div>
-
-            <div class="card card-custom p-3">
-                <div class="d-flex justify-content-between align-items-center mb-2">
-                    <span class="fw-bold text-uppercase">Muhammad Naufal Haziq</span>
-                    <span class="badge bg-primary status-badge">Tahap 2: 45%</span>
-                </div>
-                <div class="progress mb-2">
-                    <div class="progress-bar progress-bar-striped bg-warning text-dark" role="progressbar" style="width: 45%">45% SEDANG BERUSAHA</div>
-                </div>
-                <div class="d-flex justify-content-between small text-muted">
-                    <span>Surah: Al-Bayyinah (Ayat 1-4)</span>
-                    <span>Mentor: Ustaz Zaid</span>
-                </div>
+            <div class="alert alert-info text-center rounded-pill">
+                Mentor: Sila kemaskini hafazan peserta di atas. Data akan disimpan terus ke Google Sheet MKSLB.
             </div>
         </div>
-
     </div>
 
     <footer class="text-center my-5 text-muted pb-4">
         <hr class="container">
         <p class="mb-1">© 2026 Jawatankuasa Daurah Remaja MKSLB</p>
-        <small>Sistem Pengurusan Ihya Ramadhan Digital</small>
+        <small>Sistem Pengurusan Digital Ihya Ramadhan</small>
     </footer>
 
     <script>
-        function submitData() {
+        async function submitData() {
+            const btn = document.getElementById('submitBtn');
             const nama = document.getElementById('namaPeserta').value;
             const progress = document.getElementById('progressInput').value;
+            const tahap = document.getElementById('tahap').value;
             const surah = document.getElementById('surahTerakhir').value;
             
+            // Web App URL yang anda berikan
+            const webAppUrl = "https://script.google.com/macros/s/AKfycbwTRWmkTTxKmQiR6WJyb0aX2VUxxgP5sxqsaz_8atpa554PSAjnSnO9JcnFz-nt46k/exec"; 
+
             if(!nama || !progress || !surah) {
-                alert("Sila lengkapkan semua maklumat (Nama, Kemajuan, dan Surah).");
+                alert("Sila lengkapkan semua maklumat.");
                 return;
             }
 
-            // Simulasi penghantaran data
-            alert("Berjaya! Rekod " + nama + " telah dikemaskini ke 1447H Database.");
-            document.getElementById('updateForm').reset();
+            btn.disabled = true;
+            btn.innerText = "Sedang Menyimpan...";
+
+            const data = {
+                nama: nama,
+                tahap: tahap,
+                progress: progress,
+                surah: surah
+            };
+
+            try {
+                await fetch(webAppUrl, {
+                    method: 'POST',
+                    mode: 'no-cors', 
+                    cache: 'no-cache',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                alert("Alhamdulillah! Rekod " + nama + " berjaya disimpan.");
+                document.getElementById('updateForm').reset();
+            } catch (error) {
+                alert("Ralat teknikal. Sila periksa sambungan internet.");
+            } finally {
+                btn.disabled = false;
+                btn.innerText = "Simpan Rekod & Update Database";
+            }
         }
     </script>
 
