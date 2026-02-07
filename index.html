@@ -12,12 +12,9 @@
         .logo-container { background: white; width: 100px; height: 100px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px auto; box-shadow: 0 4px 10px rgba(0,0,0,0.1); overflow: hidden; }
         .logo-container img { width: 80%; height: auto; }
         .card-custom { border: none; border-radius: 20px; box-shadow: 0 6px 20px rgba(0,0,0,0.08); margin-bottom: 25px; background: white; }
-        .progress { height: 28px; border-radius: 20px; background-color: #e9ecef; }
-        .progress-bar { font-weight: 600; font-size: 0.9rem; transition: width 1s ease-in-out; }
         .btn-success { background-color: #4e944f; border: none; border-radius: 12px; padding: 12px; }
         .btn-success:hover { background-color: #1e5128; }
         .form-select, .form-control { border-radius: 12px; padding: 12px; border: 1px solid #ddd; }
-        .status-badge { font-size: 0.75rem; padding: 5px 12px; border-radius: 20px; }
     </style>
 </head>
 <body>
@@ -76,25 +73,38 @@
                             <option>NURUL IZZAH BINTI KHAIRUL ANUAR</option>
                         </select>
                     </div>
+
                     <div class="col-md-6 mb-3">
                         <label class="form-label small fw-bold">Tahap Silibus</label>
-                        <select class="form-select" id="tahap">
-                            <option>Tahap 1 (Surah Lazim: al-Fil - an-Naas)</option>
-                            <option>Tahap 2 (adh-Dhuha - al-Bayyinah)</option>
-                            <option>Tahap 3 (al-Ghaasyiah - at-Tariq)</option>
-                            <option>Tahap 4 (Abasa - al-Buruj)</option>
-                            <option>Tahap 5 (al-Fajr - an-Naba')</option>
+                        <select class="form-select" id="tahap" onchange="updateSurahList()">
+                            <option value="" disabled selected>Pilih Tahap...</option>
+                            <option value="Tahap 1">Tahap 1 (Surah Lazim: Al-Fil - An-Naas)</option>
+                            <option value="Tahap 2">Tahap 2 (Ad-Dhuha - Al-Bayyinah)</option>
+                            <option value="Tahap 3">Tahap 3 (Al-Ghaasyiah - At-Tariq)</option>
+                            <option value="Tahap 4">Tahap 4 (Abasa - Al-Buruj)</option>
+                            <option value="Tahap 5">Tahap 5 (Al-Fajr - An-Naba')</option>
                         </select>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label class="form-label small fw-bold">Surah Terakhir Dicapai</label>
-                        <input type="text" id="surahTerakhir" class="form-control" placeholder="Contoh: Al-A'laa ayat 1-10">
+                        <select class="form-select" id="surahTerakhir">
+                            <option value="" disabled selected>Pilih Tahap Dahulu...</option>
+                        </select>
                     </div>
+
                     <div class="col-md-6 mb-3">
                         <label class="form-label small fw-bold">% Kemajuan</label>
-                        <input type="number" id="progressInput" class="form-control" placeholder="0-100" min="0" max="100">
+                        <select class="form-select" id="progressInput">
+                            <option value="0">0% (Baru Mula)</option>
+                            <option value="20">20%</option>
+                            <option value="40">40%</option>
+                            <option value="60">60%</option>
+                            <option value="80">80%</option>
+                            <option value="100">100% (Selesai Tahap)</option>
+                        </select>
                     </div>
                 </div>
                 <button type="button" id="submitBtn" class="btn btn-success w-100 fw-bold shadow-sm" onclick="submitData()">Simpan Rekod & Update Database</button>
@@ -120,6 +130,31 @@
     </footer>
 
     <script>
+        // Data Surah mengikut Tahap
+        const surahData = {
+            "Tahap 1": ["Al-Fil", "Quraisy", "Al-Ma'un", "Al-Kauthar", "Al-Kafirun", "An-Nasr", "Al-Masad", "Al-Ikhlas", "Al-Falaq", "An-Nas"],
+            "Tahap 2": ["Ad-Dhuha", "Asy-Syarh", "At-Tin", "Al-'Alaq", "Al-Qadr", "Al-Bayyinah", "Az-Zalzalah", "Al-'Adiyat", "Al-Qari'ah", "At-Takathur"],
+            "Tahap 3": ["Al-Ghaasyiah", "Al-Balad", "Al-Infithar", "Al-A'laa", "Al-Lail", "Asy-Syams", "At-Tariq"],
+            "Tahap 4": ["Abasa", "At-Takwir", "Al-Insyiqaq", "Al-Buruj"],
+            "Tahap 5": ["Al-Fajr", "Al-Muthoffifin", "An-Naba'", "An-Nazi'at"]
+        };
+
+        // Fungsi untuk kemaskini senarai surah bila Tahap dipilih
+        function updateSurahList() {
+            const tahap = document.getElementById('tahap').value;
+            const surahSelect = document.getElementById('surahTerakhir');
+            surahSelect.innerHTML = '<option value="" disabled selected>Pilih Surah...</option>';
+            
+            if (surahData[tahap]) {
+                surahData[tahap].forEach(s => {
+                    let opt = document.createElement('option');
+                    opt.value = s;
+                    opt.text = s;
+                    surahSelect.add(opt);
+                });
+            }
+        }
+
         async function submitData() {
             const btn = document.getElementById('submitBtn');
             const nama = document.getElementById('namaPeserta').value;
@@ -127,10 +162,9 @@
             const tahap = document.getElementById('tahap').value;
             const surah = document.getElementById('surahTerakhir').value;
             
-            // Web App URL yang anda berikan
             const webAppUrl = "https://script.google.com/macros/s/AKfycbwTRWmkTTxKmQiR6WJyb0aX2VUxxgP5sxqsaz_8atpa554PSAjnSnO9JcnFz-nt46k/exec"; 
 
-            if(!nama || !progress || !surah) {
+            if(!nama || !tahap || !surah) {
                 alert("Sila lengkapkan semua maklumat.");
                 return;
             }
@@ -156,6 +190,7 @@
 
                 alert("Alhamdulillah! Rekod " + nama + " berjaya disimpan.");
                 document.getElementById('updateForm').reset();
+                document.getElementById('surahTerakhir').innerHTML = '<option value="" disabled selected>Pilih Tahap Dahulu...</option>';
             } catch (error) {
                 alert("Ralat teknikal. Sila periksa sambungan internet.");
             } finally {
